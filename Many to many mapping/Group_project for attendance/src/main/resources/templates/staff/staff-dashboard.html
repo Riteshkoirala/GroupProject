@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="staff/websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+    <meta charset="UTF-8">
+    <title>This is about page</title>
+</head>
+
+<body>
+<section>
+    <div class="text-center">
+        <h1> Welcome you are staff user</h1>
+        <h1> User Name <span th:text="${user.name}"></span></h1>
+
+        <!-- getting username of logged in user -->
+    </div>
+</section>
+
+</body>
+</html>

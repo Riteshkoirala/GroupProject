@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+  <meta charset="UTF-8">
+  <title>This is homepage</title>
+</head>
+<body>
+<section class="banner d-flex justify-content-center align-items-center" >
+  <div class="text-center ">
+    <h1 class="p-3"> Hi it's <span>Woodlands</span> University College</h1>
+    <p class="txt">Learn Courses in effective way. </p>
+    <button class="btn bg-primary btn-lg text-white" th:href="@{/login/user}"> Get Started</button>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+    <meta charset="UTF-8">
+    <title>This is add Staff page</title>
+</head>
+
+<body>
+<section>
+
+    <div class="card">
+        <div class="card-body">
+
+            <h1 class="text-center"> Add Student
+            </h1>
+            <div class ="container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <form action="#" th:object="${student}" enctype="multipart/form-data" method="POST" th:action="@{/user/process-student}" class="mt-2">
+
+                            <!--            first name -->
+                            <div class="input-group mt-3">
+                                <input type="text" id="studentName" name="studentName" placeholder="Enter Student Name here" class="form-control"/>
+                            </div>
+                            <div class="input-group mt-3">
+                                <input type="text" id="email" name="email" placeholder="Enter student's email here" class="form-control"/>
+                            </div>
+                            <div class="input-group mt-3">
+                                <input type="text" id="phone" name="phone" placeholder="Enter student's phone number here" class="form-control"/>
+                            </div>
+                            <div class="input-group mt-3">
+                                <input type="text" id="address" name="address" placeholder="Enter student's address here" class="form-control"/>
+                            </div>
+                            <div class="input-group mt-3">
+                                <input type="text" id="dateOfBirth" name="dateOfBirth" placeholder="Enter student's date of birth here" class="form-control"/>
+                            </div>
+
+                            <select class="form-control mt-3 mb-3" id="courses" name="courses" >
+                                <option value="0">select Course</option>
+                                <option th:each="option : ${options}" th:value="${option.cId}" th:text="${option.name}"></option>
+                            </select>
+<!--                            <div class="input-group mt-3 mb-3">-->
+<!--                                <input type="text" id="cId" name="course.id" placeholder="Enter student's course id" class="form-control"/>-->
+<!--                            </div>-->
+
+                            <div class="container text-center">
+                                <button class="btn btn-outline-primary"> Save</button>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+  <meta charset="UTF-8">
+  <title>This is Students page</title>
+</head>
+
+<body>
+<section>
+
+    <div th:if="${session.message}" th:classappend="${session.message.type}"
+         class="alert" role="alert">
+        <p class="text-center" th:text="${session.message.content}"></p>
+
+        <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+        <!-- for removing alert message -->
+    </div>
+  <div class="card mr-3">
+    <div class="card-body">
+
+      <h1 class="text-center"> Students</h1>
+      <div>
+        <a th:href="@{/user/add-student}" class="btn btn-primary btn-sm">Add Student</a>
+      </div>
+
+      <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Address</th>
+          <th scope="col">Date Of Birth</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="c : ${students}">
+          <th scope="row" th:text="${'std' + c.sId}">1</th>
+          <td>
+<!--            <a href="#" th:href="@{'/user/' + ${c.cId} + '/course/'}">-->
+              <span th:text = "${c.studentName}"></span>
+<!--            </a>-->
+
+          </td>
+
+          <td th:text="${c.email}"></td>
+          <td th:text="${c.phone}"></td>
+          <td th:text="${c.address}"></td>
+          <td th:text="${c.dateOfBirth}"></td>
+          <td>
+            <!--                            creating dynamic link-->
+            <!--             link to delete specific course id&ndash;&gt;-->
+            <a th:href="@{'/user/delete-student/' + ${c.sId}}" class="btn btn-danger btn-sm">Delete</a>
+
+            <form method="post" th:action="@{'/user/update-student/' + ${c.sId}}" class="mt-2">
+              <button  type="submit" class="btn btn-primary btn-sm">Update</button>
+            </form>
+
+          </td>
+
+        </tr>
+
+        </tbody>
+      </table>
+      </div>
+
+      <!-- pagination part -->
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

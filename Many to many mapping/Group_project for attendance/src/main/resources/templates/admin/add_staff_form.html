@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+  <meta charset="UTF-8">
+  <title>This is add Staff page</title>
+</head>
+
+<body>
+<section>
+
+  <div class="card">
+    <div class="card-body">
+
+      <h1 class="text-center"> Add Staff
+      </h1>
+      <div class ="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <form action="#" th:object="${staff}" enctype="multipart/form-data" method="POST" th:action="@{/user/process-staff}" class="mt-2">
+
+              <!--            first name -->
+              <div class="input-group mt-3">
+                <input type="text" id="staffName" name="staffName" placeholder="Enter Staff Name here" class="form-control"/>
+              </div>
+              <div class="input-group mt-3">
+                <input type="text" id="email" name="email" placeholder="Enter staff's email here" class="form-control"/>
+              </div>
+              <div class="input-group mt-3">
+                <input type="text" id="phone" name="phone" placeholder="Enter staff's phone number here" class="form-control"/>
+              </div>
+              <div class="input-group mt-3">
+                <input type="text" id="address" name="address" placeholder="Enter staff's address here" class="form-control"/>
+              </div>
+              <div class="input-group mt-3">
+                <input type="text" id="gender" name="gender" placeholder="Enter staff's gender here" class="form-control"/>
+              </div>
+              <div class="input-group mt-3">
+                <input type="text" id="age" name="age" placeholder="Enter staff's age here" class="form-control"/>
+              </div>
+              <div class="input-group mt-3">
+                <input type="text" id="department" name="department" placeholder="Enter staff's department here" class="form-control"/>
+              </div>
+              <div class="input-group mt-3">
+                <input type="text" id="qualification" name="qualification" placeholder="Enter staffs qualification here" class="form-control"/>
+              </div>
+
+              <select class="form-control mt-3 mb-3" id="modules" name="modules">
+                <option value="0">select Module</option>
+                <option th:each="option : ${options}" th:value="${option.mId}" th:text="${option.moduleName}"></option>
+              </select>
+
+              <div class="container text-center">
+                <button class="btn btn-outline-primary"> Save</button>
+
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+</body>
+</html>

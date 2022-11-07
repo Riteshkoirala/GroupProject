@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+    <meta charset="UTF-8">
+    <title>This is show Assignment page</title>
+</head>
+
+<body>
+<section>
+
+    <div th:if="${session.message}" th:classappend="${session.message.type}"
+         class="alert" role="alert">
+        <p class="text-center" th:text="${session.message.content}"></p>
+
+        <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+        <!-- for removing alert message -->
+    </div>
+    <div class="card mr-3">
+
+
+        <h1 class="text-center"> Assignments</h1>
+        <div>
+            <a th:href="@{/user/add-assignment}" class="btn btn-primary btn-sm">Add assignment</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Assignment Title</th>
+                    <th scope="col">Module</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End date</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="c : ${assignment}">
+                    <th scope="row" th:text="${'As' + c.aId}"></th>
+
+                    <td>
+                        <!--                        <a href="#" th:href="@{'/user/' + ${c.cId} + '/course/'}">-->
+                        <span th:text = "${c.title}"></span>
+                        </a>
+
+                    </td>
+
+                    <div th:each="module : ${c.module}">
+                        <td th:text="${module.moduleName}"></td>
+                    </div>
+
+                    <td th:text="${c.startDate}"></td>
+                    <td th:text="${c.endDate}"></td>
+                    <td>
+                        <!--                            creating dynamic link-->
+                        <!--             link to delete specific course id&ndash;&gt;-->
+                        <a th:href="@{'/user/delete-assignment/' + ${c.aId}}" class="btn btn-danger btn-sm">Delete</a>
+
+                        <form method="post" th:action="@{'/user/update-assignment/' + ${c.aId}}" class="mt-2">
+                            <button  type="submit" class="btn btn-primary btn-sm">Update</button>
+                        </form>
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    </div>
+</section>
+</body>
+</html>

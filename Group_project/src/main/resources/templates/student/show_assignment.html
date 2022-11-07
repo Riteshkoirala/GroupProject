@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="student/websiteBase::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+<section>
+
+    <div class="card mr-3">
+        <h1 class="text-center"> Your Assignments</h1>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Assignment Title</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End date</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="c : ${assignment}">
+                    <th scope="row" th:text="${'As' + c.aId}"></th>
+
+                    <td>
+                        <span th:text = "${c.title}"></span>
+                        </a>
+
+                    </td>
+                    <td th:text="${c.startDate}"></td>
+                    <td th:text="${c.endDate}"></td>
+                    <td>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    </div>
+</section>
+</body>
+</html>

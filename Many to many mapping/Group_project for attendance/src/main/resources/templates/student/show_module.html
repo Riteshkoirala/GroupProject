@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="student/websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+    <meta charset="UTF-8">
+    <title>This is show Module page</title>
+</head>
+
+<body>
+<section>
+    <div class="card mr-3">
+
+
+        <h1 class="text-center"> Your Modules</h1>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Module Name</th>
+                    <th scope="col">Credits</th>
+                    <th scope="col">Module code</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="c : ${modules}">
+                    <th scope="row" th:text="${'M' + c.mId}">1</th>
+
+                    <td>
+                         <a href="#" th:href="@{'/student/' + ${c.mId} + '/module/'}">
+                            <span th:text = "${c.moduleName}"></span>
+                        </a>
+
+
+                    </td>
+                    <td th:text="${c.credits}"></td>
+                    <td th:text="${c.mCode}"></td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+    </div>
+</section>
+</body>
+</html>

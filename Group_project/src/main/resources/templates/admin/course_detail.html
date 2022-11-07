@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+    <meta charset="UTF-8">
+    <title>This is about course page</title>
+</head>
+
+<body>
+<section>
+    <div class="card mr-3 ml-3">
+        <div class="card-body">
+            <div class="container text-center">
+
+                <h3 class="mt-2"> <span th:text="${course.name}">
+                </span></h3>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#Id</th>
+                        <th scope="col">CMS <span th:text="${course.cId}"></span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td><span th:text="${course.email}"></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phone</th>
+                        <td><span th:text="${course.phone}"></span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Work</th>
+                        <td><span th:text="${course.work}"></span></td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="description mt-3 mb-2">
+                    <span>Description: </span>
+                    <th:block th:text="${course.description}"></th:block>
+
+                </div>
+
+                <a th:href="@{'/user/delete/' + ${course.cId}}" class="btn btn-danger btn-sm">Delete</a>
+                <form method="post" th:action="@{'/user/update-course/' + ${course.cId}}" class="mt-2">
+                    <button  type="submit" class="btn btn-primary btn-sm">Update</button>
+                </form>
+<!--                <a th:href="@{'/user/add-module/' + ${course.cId}}" class="btn bg-primary btn-sm">Add Module</a>-->
+                <a th:href="@{'/user/show-modules/' + ${course.cId}}" class="btn bg-primary btn-sm mt-2 text-white">Show Modules</a>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

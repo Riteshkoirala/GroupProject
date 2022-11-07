@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+    <meta charset="UTF-8">
+    <title>This is show Module page</title>
+</head>
+
+<body>
+<section>
+
+    <div th:if="${session.message}" th:classappend="${session.message.type}"
+         class="alert" role="alert">
+        <p class="text-center" th:text="${session.message.content}"></p>
+
+        <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+        <!-- for removing alert message -->
+    </div>
+    <div class="card mr-3">
+
+
+            <h1 class="text-center"> Your Modules</h1>
+            <div>
+                <a th:href="@{/user/add-module}" class="btn btn-primary btn-sm">Add module</a>
+            </div>
+            <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Module Name</th>
+                    <th scope="col">Credits</th>
+                    <th scope="col">Module code</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="c : ${modules}">
+                    <th scope="row" th:text="${'M' + c.mId}">1</th>
+
+                    <td>
+<!--                        <a href="#" th:href="@{'/user/' + ${c.cId} + '/course/'}">-->
+                            <span th:text = "${c.moduleName}"></span>
+                        </a>
+
+                    </td>
+                    <td th:text="${c.credits}"></td>
+                    <td th:text="${c.mCode}"></td>
+                    <td>
+                        <!--                            creating dynamic link-->
+                        <!--             link to delete specific course id&ndash;&gt;-->
+                        <a th:href="@{'/user/delete-module/' + ${c.mId}}" class="btn btn-danger btn-sm">Delete</a>
+
+                        <form method="post" th:action="@{'/user/update-module/' + ${c.mId}}" class="mt-2">
+                            <button  type="submit" class="btn btn-primary btn-sm">Update</button>
+                        </form>
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+            </div>
+
+            <!-- pagination part -->
+
+        </div>
+    </div>
+</section>
+</body>
+</html>

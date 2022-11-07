@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="student/websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+    <meta charset="UTF-8">
+    <title>This is about page</title>
+</head>
+
+<body>
+<section>
+    <div class="card">
+        <div class="card-body">
+
+            </h1>
+            <div class ="container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div th:if="${session.message}" th:classappend="${session.message.type}"
+                             class="alert" role="alert">
+                            <p class="text-center" th:text="${session.message.content}"></p>
+
+                            <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                            <!-- for removing alert message -->
+                        </div>
+
+                        <div class="text-center">
+                            <h1> Welcome you are Student user</h1>
+                             <h1> User Name <span th:text="${user.name}"></span></h1>
+
+        <!-- getting username of logged in user -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

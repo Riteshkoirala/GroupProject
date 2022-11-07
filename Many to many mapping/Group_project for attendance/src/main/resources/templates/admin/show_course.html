@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="admin/websiteBase::Layout(~{::section})">
+<!-- passing whole section of home.html to base.html-->
+<head>
+    <meta charset="UTF-8">
+    <title>This is show contact page</title>
+</head>
+
+<body>
+<section>
+
+    <div class="card mr-3">
+        <div class="card-body">
+
+            <h1 class="text-center"> Your Course</h1>
+            <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="c : ${courses}">
+                        <th scope="row" th:text="${'cms' + c.cId}">1</th>
+                        <td th:text="${c.name}">Mardk</td>
+                        <td>
+                          <a href="#" th:href="@{'/user/' + ${c.cId} + '/course/'}">
+                              <span th:text = "${c.email}"></span>
+                          </a>
+
+                        </td>
+
+                        <td th:text="${c.phone}">Mark</td>
+                        <td>
+<!--                            creating dynamic link-->
+<!--             link to delete specific course id&ndash;&gt;-->
+                            <a th:href="@{'/user/delete/' + ${c.cId}}" class="btn btn-danger btn-sm">Delete</a>
+
+                            <form method="post" th:action="@{'/user/update-course/' + ${c.cId}}" class="mt-2">
+                                 <button  type="submit" class="btn btn-primary btn-sm">Update</button>
+                            </form>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            </div>
+            <!-- pagination part -->
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+
+                    <li th:if="${currentPage != 0}" class="page-item"><a th:href="@{'/user/show-courses/' + ${currentPage-1}}" class="page-link" href="#">Previous</a></li>
+<!--                    Run loop sequence from 1 to total pages-->
+                    <li th:classappend="${currentPage==a-1?'active':''}" th:each="a : ${#numbers.sequence(1,totalPages)}" class="page-item"><a th:href="@{'/user/show-courses/' + ${a-1}}" class="page-link" href="#"><span class="text-dark" th:text="${a}"></span></a></li>
+<!--                  If current page is not equal to total page then show next button-->
+                    <li th:if="${currentPage+1 != totalPages}" class="page-item"><a th:href="@{'/user/show-courses/' + ${currentPage+1}}" class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+</body>
+</html>

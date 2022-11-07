@@ -1,0 +1,225 @@
+
+.bg-primary{
+   background: #ba68c8 !important;
+}
+
+.bg-secondary{
+    background: #387285 !important;
+}
+.banner{
+    width:100%;
+    min-height: 100vh;
+    background: #edf2fc;
+    font-family: sans-serif;
+}
+.txt{
+
+    color: #ff4321;
+
+
+}
+span
+{
+    color: #ff4321;
+}
+.my-card{
+    padding: 20px;
+    background:#fffff;
+
+}
+.about{
+    margin-top: 60px;
+    height: 500px;
+    width: 100%;
+    display: flex;
+
+}
+
+.heading{
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+.side-container{
+
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.side-container p{
+    color: #212529;
+    margin-left: 45px;
+    margin-right: 40px;
+    max-width: 45%;
+}
+.side-container img{
+    width: 40%;
+    height: 230px;
+    margin-right: 65px;
+}
+.text{
+    color: #fff;
+    padding:  20px;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+.services
+{
+    background: #12222d;
+    padding: 100px;
+    text-align: center;
+}
+.services .container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 60px;
+}
+.services .container .serviceBx{
+    position: relative;
+    background: #fff;
+    width: 300px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.services .container .serviceBx img {
+    max-width: 100px;
+
+}
+.services .container .serviceBx h2{
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+.technology{
+    background: #3f8ffc;
+    width: 100%;
+    padding: 100px;
+    padding-top: 300px;
+    margin-top: -300px;
+    /* //to take services at middle */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.technology .contentBx{
+    max-width: 800px;
+}
+.technology .imgBx{
+    max-width: 250px;
+}
+.technology .imgBx img{
+
+    max-width: 100%;
+}
+
+
+/* sidebar styling */
+
+@media only screen and (max-width: 600px){
+.sidebar{
+    display: none;
+    width: 100% !important;
+    height:100vh;
+    height:100vh;
+    background: white;
+    padding-top: 45px;
+    text-align: center !important;
+    position: fixed;
+
+}
+
+.content{
+    margin-left: 0% !important;
+}
+
+}
+
+/* styling toggling menu*/
+.toggle{
+	position: relative;
+	width: 50px;
+	height: 50px;
+	background: #fff;
+	margin-right: 20px;
+	cursor: pointer;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.toggle::before{
+	content: '';
+	width: 28px;
+	height: 3px;
+	background: #120e0f;
+	position: absolute;
+	transform: translateY(-6px);
+	transition: 0.5s;
+}
+.toggle.active::before{
+	transform: translateY(0)rotate(45deg);
+}
+.toggle::after{
+	content: '';
+	width: 28px;
+	height: 3px;
+	background: #120e0f;
+	position: absolute;
+	transform: translateY(6px);
+	transition: 0.5s;
+}
+.toggle.active::after{
+	transform: translateY(0)rotate(-45deg);
+}
+.sidebar{
+    width: 15%;
+    height:100%;
+    background: white;
+    padding-top: 45px;
+    position:fixed;
+    display: none;
+
+
+}
+.sidebar.active{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: flex-end;
+
+	z-index: 100;
+}
+.sidebar a{
+    position: relative;
+    display: block;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: gray;
+    width: 100%;
+
+}
+.sidebar a:hover{
+    color: #fff;
+    background: #ba68c8;
+}
+.sidebar .divider{
+    height: 0.5px;
+    width: 100%;
+    background: #e2e2e2;
+    margin-top: 9px;
+}
+
+.content{
+    margin-left: 19%;
+}
